@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pooja Lathkar</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #1E2761;
+      --teal:        #028090;
+      --teal-light:  #02C39A;
+      --white:       #FFFFFF;
+      --bg:          #F7F8FC;
+      --text-dark:   #1A1A2E;
+      --text-muted:  #6B7280;
+      --border:      #E4E7EF;
+      --radius:      14px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 32px 20px;
+    }
+
+    .page {
+      max-width: 920px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      background: var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 40px rgba(30,39,97,0.08);
+      gap: 1px;
+    }
+
+    /* ── LEFT COLUMN ── */
+    .left {
+      background: var(--navy);
+      padding: 36px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .photo-wrap {
+      width: 160px;
+      height: 120px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid var(--teal-light);
+      flex-shrink: 0;
+    }
+
+    .photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 8%;
+    }
+
+    .profile-name {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+      margin-top: 14px;
+      margin-bottom: 4px;
+    }
+
+    .profile-tag {
+      font-size: 11px;
+      color: var(--teal-light);
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      margin-bottom: 6px;
+    }
+
+    .profile-years {
+      font-size: 11px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.5;
+    }
+
+    .left-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 12px;
+    }
+
+    /* Numbers */
+    .numbers-stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .num-value {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--teal-light);
+      letter-spacing: -0.5px;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .num-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.5;
+    }
+
+    /* Brands */
+    .brands-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 12px;
+      border-radius: 7px;
+      text-decoration: none;
+      color: rgba(255,255,255,0.7);
+      font-size: 12px;
+      font-weight: 500;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      transition: all 0.15s;
+    }
+
+    .brand-link:hover {
+      background: rgba(255,255,255,0.09);
+      color: var(--white);
+      border-color: rgba(255,255,255,0.15);
+    }
+
+    .brand-arrow {
+      font-size: 10px;
+      opacity: 0.4;
+    }
+
+    /* Links */
+    .links-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .side-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-size: 11px;
+      color: rgba(255,255,255,0.45);
+      transition: color 0.15s;
+    }
+
+    .side-link:hover { color: var(--teal-light); }
+
+    .side-link-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 5px;
+      background: rgba(255,255,255,0.07);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      flex-shrink: 0;
+    }
+
+    /* ── RIGHT COLUMN ── */
+    .right {
+      background: var(--white);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .statement {
+      font-size: 15px;
+      color: var(--text-dark);
+      line-height: 1.85;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .statement strong {
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    .right-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 14px;
+    }
+
+    /* Modules */
+    .modules-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .module-card {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(30,39,97,0.06);
+    }
+
+    .mc-header {
+      background: linear-gradient(135deg, #1E2761, #025c6e);
+      padding: 13px 14px;
+      text-align: center;
+    }
+
+    .mc-badge {
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      margin-bottom: 5px;
+    }
+
+    .mc-title {
+      font-size: 12px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 2px;
+    }
+
+    .mc-sub {
+      font-size: 9px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .mc-body {
+      background: #F4F6FB;
+      padding: 10px;
+    }
+
+    .mc-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      margin-bottom: 5px;
+    }
+
+    .mc-num {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: #fff;
+      font-size: 8px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .mc-text {
+      font-size: 10px;
+      color: #1A1A2E;
+      line-height: 1.5;
+    }
+
+    .mc-text strong { font-weight: 600; }
+
+    .mc-cta {
+      display: block;
+      width: 100%;
+      background: var(--teal);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 7px;
+      font-size: 10px;
+      font-weight: 600;
+      text-align: center;
+      margin-top: 8px;
+      cursor: default;
+    }
+
+    .module-coming {
+      border-radius: 10px;
+      border: 1.5px dashed var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 14px;
+      text-align: center;
+      gap: 6px;
+      background: var(--bg);
+    }
+
+    .coming-icon { font-size: 20px; margin-bottom: 2px; }
+
+    .coming-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .coming-sub {
+      font-size: 10px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .coming-pill {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--teal);
+      border: 1px solid rgba(2,128,144,0.25);
+      border-radius: 20px;
+      padding: 3px 10px;
+      margin-top: 2px;
+    }
+
+    .module-live-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--teal);
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 600;
+      margin-top: 10px;
+      border-bottom: 1px solid rgba(2,128,144,0.25);
+      padding-bottom: 1px;
+      transition: opacity 0.15s;
+    }
+
+    .module-live-link:hover { opacity: 0.7; }
+
+    /* Demo note */
+    .demo-note {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    /* Module links row */
+    .module-links-row {
+      display: flex;
+      gap: 16px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Open to */
+    .open-to-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    /* Steps flow */
+    .steps-flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .step-item {
+      padding: 18px 16px;
+      border-right: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .step-item.last { border-right: none; }
+
+    .step-num {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--teal-light);
+      letter-spacing: -1px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .step-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .step-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* CTA */
+    .cta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .cta-text {
+      font-size: 13px;
+      color: var(--text-dark);
+      font-weight: 500;
+      max-width: 280px;
+      line-height: 1.5;
+    }
+
+    .cta-btns {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 7px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+
+    .cta-btn-primary {
+      background: var(--teal);
+      color: var(--white);
+    }
+
+    .cta-btn-primary:hover { background: #026f7d; }
+
+    .cta-btn-secondary {
+      background: transparent;
+      color: var(--text-dark);
+      border: 1.5px solid var(--border);
+    }
+
+    .cta-btn-secondary:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      .page { grid-template-columns: 1fr; }
+      .modules-row { grid-template-columns: 1fr; }
+      .steps-flow { grid-template-columns: 1fr 1fr; }
+      .step-item:nth-child(2) { border-right: none; }
+      .step-item:nth-child(3) { border-right: 1px solid var(--border); border-top: 1px solid var(--border); }
+      .step-item.last { border-top: 1px solid var(--border); }
+      body { padding: 16px; }
+      .right { padding: 24px 20px; }
+      .left { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- LEFT -->
+    <div class="left">
+
+      <div>
+        <div class="photo-wrap">
+          <img src="./photo-pooja.jpeg" alt="Pooja Lathkar" />
+        </div>
+        <div class="profile-name">Pooja<br>Lathkar</div>
+        <div class="profile-tag">People · Systems · AI</div>
+        <div class="profile-years">15 years across social impact, fintech and deep-tech</div>
+      </div>
+
+      <div>
+        <div class="left-label">Impact</div>
+        <div class="numbers-stack">
+          <div>
+            <div class="num-value">50%</div>
+            <div class="num-label">productivity boost via AI-led quality audits at Groww</div>
+          </div>
+          <div>
+            <div class="num-value">90%</div>
+            <div class="num-label">reduction in cost of acquisition through first-principles organic growth</div>
+          </div>
+          <div>
+            <div class="num-value">$3M</div>
+            <div class="num-label">raised with 100% donor retention and 80% upsell across 15 funders</div>
+          </div>
+          <div>
+            <div class="num-value">50→85%</div>
+            <div class="num-label">learning retention improvement via tech-led L&D frameworks</div>
+          </div>
+          <div>
+            <div class="num-value">500+</div>
+            <div class="num-label">person CS team · quality and training built at India's largest investment platform during its IPO</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="left-label">Where I've worked</div>
+        <div class="brands-stack">
+          <a href="https://groww.in/" target="_blank" class="brand-link">
+            Groww <span class="brand-arrow">↗</span>
+          </a>
+          <a href="https://www.thenudge.org" target="_blank" class="brand-link">
+            The/Nudge Institute <span class="brand-arrow">↗</span>
+          </a>
+          <a href="https://www.digantara.co.in/" target="_blank" class="brand-link">
+            Digantara <span class="brand-arrow">↗</span>
+          </a>
+          <a href="https://www.teachforindia.org/" target="_blank" class="brand-link">
+            Teach For India <span class="brand-arrow">↗</span>
+          </a>
+          <a href="https://leadschool.in/about-us/know-the-company/" target="_blank" class="brand-link">
+            Lead School <span class="brand-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div class="left-label">Links</div>
+        <div class="links-stack">
+          <a href="mailto:poojalathkar@gmail.com" class="side-link">
+            <div class="side-link-icon">✉</div>
+            poojalathkar@gmail.com
+          </a>
+          <a href="https://www.linkedin.com/in/pooja-lathkar-b69a2619" target="_blank" class="side-link">
+            <div class="side-link-icon">in</div>
+            LinkedIn
+          </a>
+          <a href="./Pooja Lathkar_Resume 2026.pdf" target="_blank" class="side-link">
+            <div class="side-link-icon">📄</div>
+            View resume
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+
+      <p class="statement">
+        I've spent years trying to understand what makes organisations genuinely work for the people inside them.
+        <strong>What builds real trust, what sustains a culture as a team scales, what helps people do their best work even when things are moving fast.</strong>
+        Recently I've been exploring those same questions through an AI lens, and building with it.
+        The intersection of sharp people judgment and the right tools is where I work best.
+      </p>
+
+      <div>
+        <div class="right-label">What I built</div>
+        <div class="modules-row">
+          <div class="module-card">
+            <div class="mc-header">
+              <div class="mc-badge">Domain 01 · Foundation Setup</div>
+              <div class="mc-title">Org Health Diagnostic</div>
+              <div class="mc-sub">Understand where your organisation stands in 5 minutes</div>
+            </div>
+            <div class="mc-body">
+              <div class="mc-step">
+                <div class="mc-num">1</div>
+                <div class="mc-text"><strong>10 scenarios</strong> across Clarity, Culture, Performance, Growth and Leadership</div>
+              </div>
+              <div class="mc-step">
+                <div class="mc-num">2</div>
+                <div class="mc-text"><strong>No right or wrong answers</strong> — reflects your org's operating style</div>
+              </div>
+              <div class="mc-step">
+                <div class="mc-num">3</div>
+                <div class="mc-text"><strong>Stage profile</strong> with dimension-by-dimension analysis</div>
+              </div>
+              <div class="mc-step">
+                <div class="mc-num">4</div>
+                <div class="mc-text"><strong>Actionable recommendations</strong> calibrated to your growth stage</div>
+              </div>
+              <div class="mc-cta">Start the diagnostic →</div>
+            </div>
+            <a href="https://org-diagnostic-chi.vercel.app/" target="_blank" class="module-live-link" style="display:block; padding: 8px 10px; font-size:10px; border-bottom: none; border-top: 1px solid var(--border); background: #F7F8FC;">Open Org Health Diagnostic →</a>
+          </div>
+
+          <div class="module-card">
+            <div class="mc-header">
+              <div class="mc-badge">Domain 02 · People Metrics</div>
+              <div class="mc-title">HR Dashboard</div>
+              <div class="mc-sub">People metrics that matter at your stage</div>
+            </div>
+            <div class="mc-body">
+              <div class="mc-step">
+                <div class="mc-num">1</div>
+                <div class="mc-text"><strong>Real-time view</strong> of hiring, attrition and team health</div>
+              </div>
+              <div class="mc-step">
+                <div class="mc-num">2</div>
+                <div class="mc-text"><strong>Stage-calibrated</strong> metrics relevant to your org size</div>
+              </div>
+              <div class="mc-step">
+                <div class="mc-num">3</div>
+                <div class="mc-text"><strong>AI flags</strong> risks before they become visible problems</div>
+              </div>
+              <div class="mc-step">
+                <div class="mc-num">4</div>
+                <div class="mc-text"><strong>Board-ready</strong> people summary in one view</div>
+              </div>
+              <div class="mc-cta">View dashboard →</div>
+            </div>
+            <a href="https://pulse-hr-inky.vercel.app/" target="_blank" class="module-live-link" style="display:block; padding: 8px 10px; font-size:10px; border-bottom: none; border-top: 1px solid var(--border); background: #F7F8FC;">Open HR Dashboard →</a>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="right-label">How I work</div>
+        <div class="steps-flow">
+          <div class="step-item">
+            <div class="step-num">01</div>
+            <div class="step-title">Diagnose before I touch anything</div>
+            <div class="step-desc">Before anything else, I want to understand what's really going on. Not the surface problem — the one underneath it.</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">02</div>
+            <div class="step-title">Keep what's working</div>
+            <div class="step-desc">Every organisation has things that are genuinely working. I find those and protect them while fixing what isn't.</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">03</div>
+            <div class="step-title">Fix the highest-leverage problem first</div>
+            <div class="step-desc">Not everything needs fixing at once. I figure out what to tackle first so the rest gets easier.</div>
+          </div>
+          <div class="step-item last">
+            <div class="step-num">04</div>
+            <div class="step-title">Build until it runs on its own</div>
+            <div class="step-desc">The real measure is whether the system keeps working after I've stepped back. That's what I'm always building towards.</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="right-label">What I'm open to</div>
+        <p class="open-to-text">Open to the right opportunity — fractional, project-based, or full-time. My preference is to start with a defined engagement so we both get to see how it works before making a longer commitment.</p>
+      </div>
+
+      <div class="cta-row">
+        <div class="cta-text">If that maps to where you are right now, I'd love 20 minutes.</div>
+        <div class="cta-btns">
+          <a href="mailto:poojalathkar@gmail.com" class="cta-btn cta-btn-primary">Get in touch</a>
+          <a href="https://www.linkedin.com/in/pooja-lathkar-b69a2619" target="_blank" class="cta-btn cta-btn-secondary">LinkedIn →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

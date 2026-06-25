@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pooja Lathkar</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #0F1729;
+      --navy-mid:   #1E2761;
+      --teal:       #028090;
+      --teal-light: #02C39A;
+      --white:      #FFFFFF;
+      --text-muted: rgba(255,255,255,0.5);
+      --text-body:  rgba(255,255,255,0.82);
+      --border:     rgba(255,255,255,0.07);
+      --radius:     16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 100px 24px 80px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .photo-wrap {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--teal-light);
+      margin-bottom: 28px;
+    }
+
+    .photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+    }
+
+    .hero-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      margin-bottom: 28px;
+    }
+
+    .hero-statement {
+      font-size: clamp(17px, 2.6vw, 22px);
+      font-weight: 400;
+      color: var(--text-body);
+      line-height: 1.85;
+      max-width: 640px;
+    }
+
+    .hero-statement strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .scroll-hint {
+      margin-top: 56px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .scroll-line {
+      width: 28px;
+      height: 1px;
+      background: var(--teal);
+    }
+
+    /* ── SECTION ── */
+    .section {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 36px;
+    }
+
+    /* ── PRODUCT ── */
+    .product-tagline {
+      font-size: 15px;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 32px;
+    }
+
+    .modules-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .browser-frame {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.09);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+    }
+
+    .browser-bar {
+      background: #161c2e;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .browser-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+    }
+
+    .browser-dot:nth-child(1) { background: #ff5f57; }
+    .browser-dot:nth-child(2) { background: #febc2e; }
+    .browser-dot:nth-child(3) { background: #28c840; }
+
+    .browser-url {
+      margin-left: 8px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 5px;
+      padding: 3px 10px;
+      font-size: 10px;
+      color: rgba(255,255,255,0.25);
+      flex: 1;
+    }
+
+    .module-preview {
+      background: #F4F6FB;
+      padding: 18px;
+    }
+
+    .mp-header {
+      background: linear-gradient(135deg, #1E2761 0%, #1b3a5e 55%, #025c6e 100%);
+      padding: 16px 18px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .mp-badge {
+      display: inline-block;
+      background: rgba(2,195,154,0.18);
+      border: 1px solid rgba(2,195,154,0.4);
+      color: #02C39A;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-bottom: 6px;
+    }
+
+    .mp-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 3px;
+    }
+
+    .mp-sub {
+      font-size: 10px;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .mp-steps {
+      display: grid;
+      gap: 5px;
+      margin-bottom: 12px;
+    }
+
+    .mp-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      background: #ffffff;
+      border-radius: 6px;
+      padding: 7px 10px;
+      border: 1px solid #E2E8F0;
+    }
+
+    .mp-num {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #028090;
+      color: #ffffff;
+      font-size: 9px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .mp-text {
+      font-size: 10px;
+      color: #1A1A2E;
+      line-height: 1.5;
+    }
+
+    .mp-text strong { font-weight: 600; }
+
+    .mp-cta {
+      display: block;
+      width: 100%;
+      background: #028090;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      padding: 9px;
+      font-size: 11px;
+      font-weight: 600;
+      text-align: center;
+      cursor: default;
+    }
+
+    /* Coming soon module */
+    .module-coming {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px dashed rgba(255,255,255,0.12);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 320px;
+      padding: 32px 24px;
+      text-align: center;
+      gap: 12px;
+    }
+
+    .coming-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(2,195,154,0.08);
+      border: 1px solid rgba(2,195,154,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .coming-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .coming-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 180px;
+    }
+
+    .coming-pill {
+      display: inline-block;
+      background: rgba(2,195,154,0.08);
+      border: 1px solid rgba(2,195,154,0.2);
+      color: var(--teal-light);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-top: 4px;
+    }
+
+    .live-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--teal-light);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(2,195,154,0.3);
+      padding-bottom: 2px;
+      transition: opacity 0.15s;
+    }
+
+    .live-link:hover { opacity: 0.7; }
+
+    /* ── NUMBERS ── */
+    .brands-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+
+    .brand-pill {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 5px 14px;
+      letter-spacing: 0.3px;
+    }
+
+    .numbers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+
+    .number-cell {
+      background: var(--navy);
+      padding: 26px 20px;
+    }
+
+    .number-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--teal-light);
+      line-height: 1;
+      margin-bottom: 10px;
+      letter-spacing: -1px;
+    }
+
+    .number-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .resume-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+
+    .resume-link:hover { color: var(--white); }
+
+    .resume-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+    }
+
+    /* ── WHAT I BRING ── */
+    .bring-grid {
+      display: grid;
+      gap: 0;
+    }
+
+    .bring-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .bring-row:first-child .bring-cell { padding-top: 24px; }
+    .bring-row:last-child .bring-cell { padding-bottom: 24px; }
+
+    .bring-cell {
+      background: var(--navy);
+      padding: 18px 22px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .bring-cell.situation {
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .bring-cell.response {
+      color: var(--text-body);
+    }
+
+    .bring-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border-radius: var(--radius) var(--radius) 0 0;
+      overflow: hidden;
+    }
+
+    .bring-header-cell {
+      background: rgba(2,128,144,0.08);
+      padding: 10px 22px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    .bring-wrapper {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .bring-rows {
+      display: grid;
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .bring-row-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .bring-cell-left {
+      background: var(--navy);
+      padding: 16px 22px;
+      font-size: 13px;
+      color: var(--text-muted);
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    .bring-cell-right {
+      background: var(--navy);
+      padding: 16px 22px;
+      font-size: 13px;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 80px 24px 120px;
+      border-top: 1px solid var(--border);
+    }
+
+    .cta-heading {
+      font-size: clamp(20px, 3.5vw, 28px);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      line-height: 1.35;
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+
+    .cta-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+
+    .cta-btn-primary {
+      background: var(--teal);
+      color: var(--white);
+    }
+
+    .cta-btn-primary:hover { background: #026f7d; }
+
+    .cta-btn-secondary {
+      background: transparent;
+      color: var(--text-body);
+      border: 1.5px solid rgba(255,255,255,0.12);
+    }
+
+    .cta-btn-secondary:hover {
+      border-color: var(--teal);
+      color: var(--teal-light);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 620px) {
+      .modules-grid { grid-template-columns: 1fr; }
+      .numbers-grid { grid-template-columns: 1fr 1fr; }
+      .bring-header-cell, .bring-cell-left, .bring-cell-right { padding: 12px 16px; }
+      .hero { padding: 80px 20px 60px; }
+      .section { padding: 60px 20px; }
+      .cta-section { padding: 60px 20px 80px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="photo-wrap">
+      <img src="./pooja-photo.jpg" alt="Pooja Lathkar" />
+    </div>
+    <div class="hero-name">Pooja Lathkar</div>
+    <p class="hero-statement">
+      I've always been drawn to the parts of an organisation that are hard to see clearly —
+      <strong>why good people leave, why teams lose their energy, why performance conversations happen too late.</strong>
+      I've spent years learning how to look at those things honestly and build something useful from what I find.
+      Recently that curiosity led me to design and build an AI-powered HR module from scratch, just to see if I could.
+    </p>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      See the work
+    </div>
+  </section>
+
+  <!-- PRODUCT -->
+  <section class="section">
+    <div class="section-label">What I built</div>
+    <p class="product-tagline">I built this to understand what I was solving for.</p>
+
+    <div class="modules-grid">
+
+      <!-- Module 1: Core Values -->
+      <div class="browser-frame">
+        <div class="browser-bar">
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+          <div class="browser-url">hr-products-modules.vercel.app</div>
+        </div>
+        <div class="module-preview">
+          <div class="mp-header">
+            <div class="mp-badge">Domain 01 · Foundation Setup</div>
+            <div class="mp-title">Core Values &amp; Behaviour</div>
+            <div class="mp-sub">Excavating what your organisation already believes</div>
+          </div>
+          <div class="mp-steps">
+            <div class="mp-step">
+              <div class="mp-num">1</div>
+              <div class="mp-text"><strong>You answer 10 scenarios</strong> that reveal values through choices, not declarations.</div>
+            </div>
+            <div class="mp-step">
+              <div class="mp-num">2</div>
+              <div class="mp-text"><strong>Up to 5 colleagues respond</strong> independently — blind to each other's answers.</div>
+            </div>
+            <div class="mp-step">
+              <div class="mp-num">3</div>
+              <div class="mp-text"><strong>AI identifies patterns</strong> and generates a three-layer values artifact.</div>
+            </div>
+            <div class="mp-step">
+              <div class="mp-num">4</div>
+              <div class="mp-text"><strong>A reviewer refines</strong> before sharing it back for your approval.</div>
+            </div>
+          </div>
+          <div class="mp-cta">Begin scenarios →</div>
+        </div>
+      </div>
+
+      <!-- Module 2: Coming Soon -->
+      <div class="module-coming">
+        <div class="coming-icon">📊</div>
+        <div class="coming-title">Founder HR Dashboard</div>
+        <div class="coming-sub">A real-time view of the people metrics that matter most at your stage.</div>
+        <div class="coming-pill">In progress</div>
+      </div>
+
+    </div>
+
+    <a href="https://hr-products-modules.vercel.app/" target="_blank" class="live-link">
+      Open the live module →
+    </a>
+  </section>
+
+  <!-- WHAT I'VE DONE -->
+  <section class="section">
+    <div class="section-label">What I've done</div>
+
+    <div class="brands-row">
+      <span class="brand-pill">Groww</span>
+      <span class="brand-pill">The/Nudge Institute</span>
+      <span class="brand-pill">Digantara</span>
+      <span class="brand-pill">Teach For India</span>
+      <span class="brand-pill">SEED Schools</span>
+    </div>
+
+    <div class="numbers-grid">
+      <div class="number-cell">
+        <div class="number-value">50%</div>
+        <div class="number-label">boost in team productivity through AI-led quality audits at Groww</div>
+      </div>
+      <div class="number-cell">
+        <div class="number-value">220K</div>
+        <div class="number-label">people reached in 15 months via a first-principles youth awareness project — at 90% lower cost</div>
+      </div>
+      <div class="number-cell">
+        <div class="number-value">88→91%</div>
+        <div class="number-label">CSAT improvement through redesigned training across a 500-person CS team</div>
+      </div>
+      <div class="number-cell">
+        <div class="number-value">500+</div>
+        <div class="number-label">employees across engagement, performance and L&D systems at The/Nudge Institute</div>
+      </div>
+      <div class="number-cell">
+        <div class="number-value">120</div>
+        <div class="number-label">person deep-tech team — org design and people systems across India and the US</div>
+      </div>
+    </div>
+
+    <a href="./Pooja Lathkar_Resume 2026.pdf" target="_blank" class="resume-link">
+      <div class="resume-icon">📄</div>
+      View full resume
+    </a>
+  </section>
+
+  <!-- WHAT I BRING -->
+  <section class="section">
+    <div class="section-label">What I bring</div>
+    <div class="bring-wrapper">
+      <div class="bring-header">
+        <div class="bring-header-cell">The situation</div>
+        <div class="bring-header-cell">What I do</div>
+      </div>
+      <div class="bring-rows">
+        <div class="bring-row-item">
+          <div class="bring-cell-left">The team has outgrown its early culture — things feel different but nobody can name it</div>
+          <div class="bring-cell-right">I find what's actually shifted and build the structures that make the new stage work</div>
+        </div>
+        <div class="bring-row-item">
+          <div class="bring-cell-left">Roles are unclear, decisions are slow, and people are duplicating each other's work</div>
+          <div class="bring-cell-right">I bring clarity to who owns what and why — without over-engineering it</div>
+        </div>
+        <div class="bring-row-item">
+          <div class="bring-cell-left">Performance conversations are happening too late, or not at all</div>
+          <div class="bring-cell-right">I build the conditions and the habits that make honest feedback the default</div>
+        </div>
+        <div class="bring-row-item">
+          <div class="bring-cell-left">Good people are leaving and the reasons feel vague</div>
+          <div class="bring-cell-right">I go looking for the signal that's hiding behind the noise</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-heading">If that maps to where you are right now, I'd love 20 minutes.</div>
+    <div class="cta-links">
+      <a href="mailto:poojalathkar@gmail.com" class="cta-btn cta-btn-primary">poojalathkar@gmail.com</a>
+      <a href="https://www.linkedin.com/in/pooja-lathkar-b69a2619" target="_blank" class="cta-btn cta-btn-secondary">LinkedIn →</a>
+    </div>
+  </section>
+
+</body>
+</html>
