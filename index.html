@@ -3,448 +3,332 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pooja Lathkar</title>
+  <title>Pooja Lathkar — People, Systems & AI</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:        #1E2761;
-      --teal:        #028090;
-      --teal-light:  #02C39A;
-      --white:       #FFFFFF;
-      --bg:          #F7F8FC;
-      --text-dark:   #1A1A2E;
-      --text-muted:  #6B7280;
-      --border:      #E4E7EF;
-      --radius:      14px;
+      --navy:   #1A2456;
+      --teal:   #028090;
+      --text:   #111827;
+      --muted:  #6B7280;
+      --border: #E5E7EB;
+      --bg:     #F9FAFB;
+      --white:  #FFFFFF;
     }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       background: var(--bg);
-      color: var(--text-dark);
+      color: var(--text);
       line-height: 1.6;
-      min-height: 100vh;
-      padding: 32px 20px;
     }
 
     .page {
-      max-width: 920px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 240px 1fr;
-      background: var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: 0 8px 40px rgba(30,39,97,0.08);
-      gap: 1px;
+      max-width: 740px;
+      margin: 64px auto;
+      padding: 0 28px;
     }
 
-    /* ── LEFT COLUMN ── */
-    .left {
-      background: var(--navy);
-      padding: 36px 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
-
-    .photo-wrap {
-      width: 160px;
-      height: 120px;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 2px solid var(--teal-light);
-      flex-shrink: 0;
-    }
-
-    .photo-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 8%;
-    }
-
-    .profile-name {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--white);
-      letter-spacing: -0.3px;
-      line-height: 1.2;
-      margin-top: 14px;
-      margin-bottom: 4px;
-    }
-
-    .profile-tag {
-      font-size: 11px;
-      color: var(--teal-light);
-      font-weight: 600;
-      letter-spacing: 0.3px;
-      margin-bottom: 6px;
-    }
-
-    .profile-years {
-      font-size: 11px;
-      color: rgba(255,255,255,0.45);
-      line-height: 1.5;
-    }
-
-    .left-label {
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-      margin-bottom: 12px;
-    }
-
-    /* Numbers */
-    .numbers-stack {
-      display: grid;
-      gap: 16px;
-    }
-
-    .num-value {
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--teal-light);
-      letter-spacing: -0.5px;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .num-label {
-      font-size: 11px;
-      color: rgba(255,255,255,0.5);
-      line-height: 1.5;
-    }
-
-    /* Brands */
-    .brands-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .brand-link {
+    /* ─── HEADER ─── */
+    .header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 9px 12px;
-      border-radius: 7px;
-      text-decoration: none;
-      color: rgba(255,255,255,0.7);
-      font-size: 12px;
-      font-weight: 500;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.07);
-      transition: all 0.15s;
-    }
-
-    .brand-link:hover {
-      background: rgba(255,255,255,0.09);
-      color: var(--white);
-      border-color: rgba(255,255,255,0.15);
-    }
-
-    .brand-arrow {
-      font-size: 10px;
-      opacity: 0.4;
-    }
-
-    /* Links */
-    .links-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .side-link {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      font-size: 11px;
-      color: rgba(255,255,255,0.45);
-      transition: color 0.15s;
-    }
-
-    .side-link:hover { color: var(--teal-light); }
-
-    .side-link-icon {
-      width: 22px;
-      height: 22px;
-      border-radius: 5px;
-      background: rgba(255,255,255,0.07);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      flex-shrink: 0;
-    }
-
-    /* ── RIGHT COLUMN ── */
-    .right {
-      background: var(--white);
-      padding: 36px 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
-
-    .statement {
-      font-size: 15px;
-      color: var(--text-dark);
-      line-height: 1.85;
-      padding-bottom: 28px;
+      gap: 24px;
+      padding-bottom: 44px;
       border-bottom: 1px solid var(--border);
+      margin-bottom: 52px;
     }
 
-    .statement strong {
+    .header-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .header-name {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -0.4px;
+      line-height: 1.15;
+    }
+
+    .header-role {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-top: 6px;
+    }
+
+    .header-meta {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    /* ─── SECTION LABEL ─── */
+    .label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    /* ─── ABOUT ─── */
+    .about {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 56px;
+    }
+
+    .about strong {
       color: var(--navy);
       font-weight: 600;
     }
 
-    .right-label {
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 14px;
+    /* ─── IMPACT ─── */
+    .impact {
+      margin-bottom: 56px;
     }
 
-    /* Modules */
-    .modules-row {
+    .impact-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+
+    .impact-item {
+      padding-right: 20px;
+    }
+
+    .impact-item + .impact-item {
+      padding-left: 20px;
+      border-left: 1px solid var(--border);
+    }
+
+    .impact-num {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+
+    .impact-desc {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+
+    /* ─── MODULES ─── */
+    .modules {
+      margin-bottom: 56px;
+    }
+
+    .modules-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 14px;
     }
 
     .module-card {
+      background: var(--white);
+      border: 1px solid var(--border);
       border-radius: 10px;
       overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: 0 2px 8px rgba(30,39,97,0.06);
     }
 
-    .mc-header {
-      background: #ffffff;
+    .mc-head {
+      padding: 18px 20px 14px;
       border-bottom: 1px solid var(--border);
-      padding: 13px 14px;
-      text-align: center;
     }
 
-    .mc-badge {
-      font-size: 8px;
+    .mc-tag {
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--teal);
       margin-bottom: 5px;
     }
 
-    .mc-title {
-      font-size: 12px;
-      font-weight: 800;
+    .mc-name {
+      font-size: 16px;
+      font-weight: 700;
       color: var(--navy);
-      margin-bottom: 2px;
+      line-height: 1.2;
+      margin-bottom: 4px;
     }
 
     .mc-sub {
-      font-size: 9px;
-      color: var(--text-muted);
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
     }
 
     .mc-body {
-      background: #F4F6FB;
-      padding: 10px;
-    }
-
-    .mc-step {
-      display: flex;
-      align-items: flex-start;
-      gap: 6px;
-      margin-bottom: 5px;
-    }
-
-    .mc-num {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: var(--teal);
-      color: #fff;
-      font-size: 8px;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .mc-text {
-      font-size: 10px;
-      color: #1A1A2E;
-      line-height: 1.5;
-    }
-
-    .mc-text strong { font-weight: 600; }
-
-    .mc-cta {
-      display: block;
-      width: 100%;
-      background: var(--teal);
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      padding: 7px;
-      font-size: 10px;
-      font-weight: 600;
-      text-align: center;
-      margin-top: 8px;
-      cursor: default;
-    }
-
-    .module-coming {
-      border-radius: 10px;
-      border: 1.5px dashed var(--border);
+      padding: 16px 20px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px 14px;
-      text-align: center;
-      gap: 6px;
-      background: var(--bg);
+      gap: 9px;
     }
 
-    .coming-icon { font-size: 20px; margin-bottom: 2px; }
-
-    .coming-title {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--text-dark);
+    .mc-point {
+      font-size: 12.5px;
+      color: var(--text);
+      line-height: 1.45;
+      padding-left: 14px;
+      position: relative;
     }
 
-    .coming-sub {
-      font-size: 10px;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .coming-pill {
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+    .mc-point::before {
+      content: "—";
+      position: absolute;
+      left: 0;
       color: var(--teal);
-      border: 1px solid rgba(2,128,144,0.25);
-      border-radius: 20px;
-      padding: 3px 10px;
-      margin-top: 2px;
-    }
-
-    .module-live-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--teal);
-      text-decoration: none;
       font-size: 11px;
+    }
+
+    .mc-foot {
+      padding: 14px 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .mc-btn {
+      display: block;
+      text-align: center;
+      padding: 9px 14px;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 6px;
+      font-size: 12px;
       font-weight: 600;
-      margin-top: 10px;
-      border-bottom: 1px solid rgba(2,128,144,0.25);
-      padding-bottom: 1px;
-      transition: opacity 0.15s;
+      text-decoration: none;
+      transition: background 0.15s;
     }
 
-    .module-live-link:hover { opacity: 0.7; }
+    .mc-btn:hover { background: var(--teal); }
 
-    /* Demo note */
-    .demo-note {
-      font-size: 10px;
-      color: var(--text-muted);
-      font-style: italic;
-      margin-bottom: 10px;
+    /* ─── HOW I WORK ─── */
+    .how {
+      margin-bottom: 56px;
     }
 
-    /* Module links row */
-    .module-links-row {
-      display: flex;
-      gap: 16px;
-      margin-top: 10px;
-      flex-wrap: wrap;
-    }
-
-    /* Open to */
-    .open-to-text {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.75;
-    }
-
-    /* Steps flow */
-    .steps-flow {
+    .steps {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      gap: 24px;
     }
-
-    .step-item {
-      padding: 18px 16px;
-      border-right: 1px solid var(--border);
-      background: var(--white);
-    }
-
-    .step-item.last { border-right: none; }
 
     .step-num {
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--teal-light);
-      letter-spacing: -1px;
-      line-height: 1;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--teal);
+      letter-spacing: 0.06em;
       margin-bottom: 10px;
     }
 
     .step-title {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--navy);
-      line-height: 1.4;
-      margin-bottom: 6px;
+      line-height: 1.35;
+      margin-bottom: 8px;
     }
 
-    .step-desc {
-      font-size: 11px;
-      color: var(--text-muted);
+    .step-body {
+      font-size: 12px;
+      color: var(--muted);
       line-height: 1.6;
     }
 
-    /* CTA */
-    .cta-row {
+    /* ─── EXPERIENCE ─── */
+    .experience {
+      margin-bottom: 56px;
+    }
+
+    .exp-list {
+      border-top: 1px solid var(--border);
+    }
+
+    .exp-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      gap: 16px;
+    }
+
+    .exp-company {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    .exp-company:hover { color: var(--teal); }
+
+    .exp-role {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .exp-period {
+      font-size: 12px;
+      color: var(--muted);
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    /* ─── OPEN TO ─── */
+    .open-to {
+      margin-bottom: 56px;
+    }
+
+    .open-to p {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.75;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+
+    /* ─── CTA ─── */
+    .cta {
+      padding-top: 36px;
+      border-top: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-top: 22px;
-      border-top: 1px solid var(--border);
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 16px;
+      margin-bottom: 80px;
     }
 
-    .cta-text {
-      font-size: 13px;
-      color: var(--text-dark);
+    .cta-line {
+      font-size: 15px;
       font-weight: 500;
-      max-width: 280px;
+      color: var(--navy);
+      max-width: 300px;
       line-height: 1.5;
     }
 
-    .cta-btns {
+    .cta-actions {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
@@ -453,241 +337,222 @@
     .cta-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 9px 18px;
-      border-radius: 7px;
-      font-size: 12px;
+      gap: 5px;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-size: 12.5px;
       font-weight: 600;
       text-decoration: none;
       transition: all 0.15s;
     }
 
-    .cta-btn-primary {
+    .btn-primary {
       background: var(--teal);
       color: var(--white);
     }
 
-    .cta-btn-primary:hover { background: #026f7d; }
+    .btn-primary:hover { background: #026f7d; }
 
-    .cta-btn-secondary {
+    .btn-ghost {
       background: transparent;
-      color: var(--text-dark);
+      color: var(--text);
       border: 1.5px solid var(--border);
     }
 
-    .cta-btn-secondary:hover {
+    .btn-ghost:hover {
       border-color: var(--teal);
       color: var(--teal);
     }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 680px) {
-      .page { grid-template-columns: 1fr; }
-      .modules-row { grid-template-columns: 1fr; }
-      .steps-flow { grid-template-columns: 1fr 1fr; }
-      .step-item:nth-child(2) { border-right: none; }
-      .step-item:nth-child(3) { border-right: 1px solid var(--border); border-top: 1px solid var(--border); }
-      .step-item.last { border-top: 1px solid var(--border); }
-      body { padding: 16px; }
-      .right { padding: 24px 20px; }
-      .left { padding: 28px 20px; }
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 640px) {
+      .page { margin: 32px auto; padding: 0 20px; }
+      .impact-row { grid-template-columns: 1fr 1fr 1fr; }
+      .impact-item:nth-child(4),
+      .impact-item:nth-child(5) { margin-top: 20px; }
+      .modules-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .cta { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
   <div class="page">
 
-    <!-- LEFT -->
-    <div class="left">
-
+    <!-- HEADER -->
+    <header class="header">
+      <img src="./Headshot.webp" alt="Pooja Lathkar" class="header-photo" />
       <div>
-        <div class="photo-wrap">
-          <img src="./Headshot.webp" alt="Pooja Lathkar" />
-        </div>
-        <div class="profile-name">Pooja<br>Lathkar</div>
-        <div class="profile-tag">People · Systems · AI</div>
-        <div class="profile-years">15 years across social impact, fintech and deep-tech</div>
+        <div class="header-name">Pooja Lathkar</div>
+        <div class="header-role">People · Systems · AI</div>
+        <div class="header-meta">15 years across social impact, fintech and deep-tech</div>
       </div>
+    </header>
 
-      <div>
-        <div class="left-label">Impact</div>
-        <div class="numbers-stack">
-          <div>
-            <div class="num-value">50%</div>
-            <div class="num-label">productivity boost via AI-led quality audits at Groww</div>
-          </div>
-          <div>
-            <div class="num-value">90%</div>
-            <div class="num-label">reduction in cost of acquisition through first-principles organic growth</div>
-          </div>
-          <div>
-            <div class="num-value">$3M</div>
-            <div class="num-label">raised with 100% donor retention and 80% upsell across 15 funders</div>
-          </div>
-          <div>
-            <div class="num-value">50→85%</div>
-            <div class="num-label">learning retention improvement via tech-led L&D frameworks</div>
-          </div>
-          <div>
-            <div class="num-value">500+</div>
-            <div class="num-label">person CS team · quality and training built at India's largest investment platform during its IPO</div>
-          </div>
+    <!-- ABOUT -->
+    <p class="about">
+      I've spent years trying to understand what makes organisations genuinely work for the people inside them.
+      <strong>What builds real trust, what sustains a culture as a team scales, what helps people do their best work even when things are moving fast.</strong>
+      Recently I've been exploring those same questions through an AI lens, and building with it.
+      The intersection of sharp people judgment and the right tools is where I work best.
+    </p>
+
+    <!-- IMPACT -->
+    <section class="impact">
+      <div class="label">Impact</div>
+      <div class="impact-row">
+        <div class="impact-item">
+          <div class="impact-num">50%</div>
+          <div class="impact-desc">productivity boost via AI-led quality audits at Groww</div>
         </div>
-      </div>
-
-      <div>
-        <div class="left-label">Where I've worked</div>
-        <div class="brands-stack">
-          <a href="https://groww.in/" target="_blank" class="brand-link">
-            Groww <span class="brand-arrow">↗</span>
-          </a>
-          <a href="https://www.thenudge.org" target="_blank" class="brand-link">
-            The/Nudge Institute <span class="brand-arrow">↗</span>
-          </a>
-          <a href="https://www.digantara.co.in/" target="_blank" class="brand-link">
-            Digantara <span class="brand-arrow">↗</span>
-          </a>
-          <a href="https://www.teachforindia.org/" target="_blank" class="brand-link">
-            Teach For India <span class="brand-arrow">↗</span>
-          </a>
-          <a href="https://leadschool.in/about-us/know-the-company/" target="_blank" class="brand-link">
-            Lead School <span class="brand-arrow">↗</span>
-          </a>
+        <div class="impact-item">
+          <div class="impact-num">90%</div>
+          <div class="impact-desc">reduction in cost of acquisition through organic growth</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-num">$3M</div>
+          <div class="impact-desc">raised with 100% donor retention across 15 funders</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-num">50→85%</div>
+          <div class="impact-desc">learning retention via tech-led L&D frameworks</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-num">500+</div>
+          <div class="impact-desc">person CS team built during Groww's IPO</div>
         </div>
       </div>
+    </section>
 
-      <div>
-        <div class="left-label">Links</div>
-        <div class="links-stack">
-          <a href="mailto:poojalathkar@gmail.com" class="side-link">
-            <div class="side-link-icon">✉</div>
-            poojalathkar@gmail.com
-          </a>
-          <a href="https://www.linkedin.com/in/pooja-lathkar-b69a2619" target="_blank" class="side-link">
-            <div class="side-link-icon">in</div>
-            LinkedIn
-          </a>
-          <a href="./Pooja Lathkar_Resume 2026.pdf" target="_blank" class="side-link">
-            <div class="side-link-icon">📄</div>
-            View resume
-          </a>
+    <!-- WHAT I BUILT -->
+    <section class="modules">
+      <div class="label">What I Built</div>
+      <div class="modules-grid">
+
+        <div class="module-card">
+          <div class="mc-head">
+            <div class="mc-tag">Domain 01 · Foundation Setup</div>
+            <div class="mc-name">Org Health Diagnostic</div>
+            <div class="mc-sub">Understand where your organisation stands in 5 minutes</div>
+          </div>
+          <div class="mc-body">
+            <div class="mc-point">10 scenarios across Clarity, Culture, Performance, Growth and Leadership</div>
+            <div class="mc-point">No right or wrong answers — reflects your org's operating style</div>
+            <div class="mc-point">Stage profile with dimension-by-dimension analysis</div>
+            <div class="mc-point">Actionable recommendations calibrated to your growth stage</div>
+          </div>
+          <div class="mc-foot">
+            <a href="https://org-diagnostic-chi.vercel.app/" target="_blank" class="mc-btn">Start the diagnostic →</a>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <div class="mc-head">
+            <div class="mc-tag">Domain 02 · People Metrics</div>
+            <div class="mc-name">HR Dashboard</div>
+            <div class="mc-sub">People metrics that matter at your stage</div>
+          </div>
+          <div class="mc-body">
+            <div class="mc-point">Real-time view of hiring, attrition and team health</div>
+            <div class="mc-point">Stage-calibrated metrics relevant to your org size</div>
+            <div class="mc-point">AI flags risks before they become visible problems</div>
+            <div class="mc-point">Board-ready people summary in one view</div>
+          </div>
+          <div class="mc-foot">
+            <a href="https://pulse-hr-inky.vercel.app/" target="_blank" class="mc-btn">View dashboard →</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- HOW I WORK -->
+    <section class="how">
+      <div class="label">How I Work</div>
+      <div class="steps">
+        <div>
+          <div class="step-num">01</div>
+          <div class="step-title">Diagnose before I touch anything</div>
+          <div class="step-body">Before anything else, I want to understand what's really going on. Not the surface problem — the one underneath it.</div>
+        </div>
+        <div>
+          <div class="step-num">02</div>
+          <div class="step-title">Keep what's working</div>
+          <div class="step-body">Every organisation has things that are genuinely working. I find those and protect them while fixing what isn't.</div>
+        </div>
+        <div>
+          <div class="step-num">03</div>
+          <div class="step-title">Fix the highest-leverage problem first</div>
+          <div class="step-body">Not everything needs fixing at once. I figure out what to tackle first so the rest gets easier.</div>
+        </div>
+        <div>
+          <div class="step-num">04</div>
+          <div class="step-title">Build until it runs on its own</div>
+          <div class="step-body">The real measure is whether the system keeps working after I've stepped back.</div>
         </div>
       </div>
+    </section>
 
-    </div>
+    <!-- WHERE I'VE WORKED -->
+    <section class="experience">
+      <div class="label">Where I've Worked</div>
+      <div class="exp-list">
+        <div class="exp-item">
+          <div>
+            <a href="https://groww.in/" target="_blank" class="exp-company">Groww ↗</a>
+            <div class="exp-role">Head of People · Fintech, Series D+</div>
+          </div>
+          <div class="exp-period">2021 – 2024</div>
+        </div>
+        <div class="exp-item">
+          <div>
+            <a href="https://www.thenudge.org" target="_blank" class="exp-company">The/Nudge Institute ↗</a>
+            <div class="exp-role">Director, People & Culture · Social Impact</div>
+          </div>
+          <div class="exp-period">2019 – 2021</div>
+        </div>
+        <div class="exp-item">
+          <div>
+            <a href="https://www.digantara.co.in/" target="_blank" class="exp-company">Digantara ↗</a>
+            <div class="exp-role">VP People · Deep-tech, Series A</div>
+          </div>
+          <div class="exp-period">2024</div>
+        </div>
+        <div class="exp-item">
+          <div>
+            <a href="https://www.teachforindia.org/" target="_blank" class="exp-company">Teach For India ↗</a>
+            <div class="exp-role">People Operations · Social Impact</div>
+          </div>
+          <div class="exp-period">2016 – 2019</div>
+        </div>
+        <div class="exp-item">
+          <div>
+            <a href="https://leadschool.in/about-us/know-the-company/" target="_blank" class="exp-company">Lead School ↗</a>
+            <div class="exp-role">Head of People · EdTech, Series C</div>
+          </div>
+          <div class="exp-period">2014 – 2016</div>
+        </div>
+      </div>
+    </section>
 
-    <!-- RIGHT -->
-    <div class="right">
-
-      <p class="statement">
-        I've spent years trying to understand what makes organisations genuinely work for the people inside them.
-        <strong>What builds real trust, what sustains a culture as a team scales, what helps people do their best work even when things are moving fast.</strong>
-        Recently I've been exploring those same questions through an AI lens, and building with it.
-        The intersection of sharp people judgment and the right tools is where I work best.
+    <!-- WHAT I'M OPEN TO -->
+    <section class="open-to">
+      <div class="label">What I'm Open To</div>
+      <p>
+        I'm currently exploring fractional and full-time opportunities. The right fit is a Series A–C company at an inflection point — where culture, systems, and leadership development actually determine what happens next. I'm open to remote roles with international organisations working on problems that matter.
       </p>
+    </section>
 
-      <div>
-        <div class="right-label">What I built</div>
-        <div class="modules-row">
-          <div class="module-card">
-            <div class="mc-header">
-              <div class="mc-badge">Domain 01 · Foundation Setup</div>
-              <div class="mc-title">Org Health Diagnostic</div>
-              <div class="mc-sub">Understand where your organisation stands in 5 minutes</div>
-            </div>
-            <div class="mc-body">
-              <div class="mc-step">
-                <div class="mc-num">1</div>
-                <div class="mc-text"><strong>10 scenarios</strong> across Clarity, Culture, Performance, Growth and Leadership</div>
-              </div>
-              <div class="mc-step">
-                <div class="mc-num">2</div>
-                <div class="mc-text"><strong>No right or wrong answers</strong> — reflects your org's operating style</div>
-              </div>
-              <div class="mc-step">
-                <div class="mc-num">3</div>
-                <div class="mc-text"><strong>Stage profile</strong> with dimension-by-dimension analysis</div>
-              </div>
-              <div class="mc-step">
-                <div class="mc-num">4</div>
-                <div class="mc-text"><strong>Actionable recommendations</strong> calibrated to your growth stage</div>
-              </div>
-              <div class="mc-cta">Start the diagnostic →</div>
-            </div>
-            <a href="https://org-diagnostic-chi.vercel.app/" target="_blank" class="module-live-link" style="display:block; padding: 8px 10px; font-size:10px; border-bottom: none; border-top: 1px solid var(--border); background: #F7F8FC;">Open Org Health Diagnostic →</a>
-          </div>
-
-          <div class="module-card">
-            <div class="mc-header">
-              <div class="mc-badge">Domain 02 · People Metrics</div>
-              <div class="mc-title">HR Dashboard</div>
-              <div class="mc-sub">People metrics that matter at your stage</div>
-            </div>
-            <div class="mc-body">
-              <div class="mc-step">
-                <div class="mc-num">1</div>
-                <div class="mc-text"><strong>Real-time view</strong> of hiring, attrition and team health</div>
-              </div>
-              <div class="mc-step">
-                <div class="mc-num">2</div>
-                <div class="mc-text"><strong>Stage-calibrated</strong> metrics relevant to your org size</div>
-              </div>
-              <div class="mc-step">
-                <div class="mc-num">3</div>
-                <div class="mc-text"><strong>AI flags</strong> risks before they become visible problems</div>
-              </div>
-              <div class="mc-step">
-                <div class="mc-num">4</div>
-                <div class="mc-text"><strong>Board-ready</strong> people summary in one view</div>
-              </div>
-              <div class="mc-cta">View dashboard →</div>
-            </div>
-            <a href="https://pulse-hr-inky.vercel.app/" target="_blank" class="module-live-link" style="display:block; padding: 8px 10px; font-size:10px; border-bottom: none; border-top: 1px solid var(--border); background: #F7F8FC;">Open HR Dashboard →</a>
-          </div>
-        </div>
+    <!-- CTA -->
+    <div class="cta">
+      <div class="cta-line">If that maps to where you are right now, I'd love 20 minutes.</div>
+      <div class="cta-actions">
+        <a href="https://wa.me/919663757860" target="_blank" class="cta-btn btn-primary">💬 WhatsApp</a>
+        <a href="https://www.linkedin.com/in/pooja-lathkar-b69a2619" target="_blank" class="cta-btn btn-ghost">LinkedIn →</a>
+        <a href="mailto:poojalathkar@gmail.com" class="cta-btn btn-ghost">Email →</a>
       </div>
-
-      <div>
-        <div class="right-label">How I work</div>
-        <div class="steps-flow">
-          <div class="step-item">
-            <div class="step-num">01</div>
-            <div class="step-title">Diagnose before I touch anything</div>
-            <div class="step-desc">Before anything else, I want to understand what's really going on. Not the surface problem — the one underneath it.</div>
-          </div>
-          <div class="step-item">
-            <div class="step-num">02</div>
-            <div class="step-title">Keep what's working</div>
-            <div class="step-desc">Every organisation has things that are genuinely working. I find those and protect them while fixing what isn't.</div>
-          </div>
-          <div class="step-item">
-            <div class="step-num">03</div>
-            <div class="step-title">Fix the highest-leverage problem first</div>
-            <div class="step-desc">Not everything needs fixing at once. I figure out what to tackle first so the rest gets easier.</div>
-          </div>
-          <div class="step-item last">
-            <div class="step-num">04</div>
-            <div class="step-title">Build until it runs on its own</div>
-            <div class="step-desc">The real measure is whether the system keeps working after I've stepped back. That's what I'm always building towards.</div>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <div class="right-label">What I'm open to</div>
-        <p class="open-to-text">Open to the right opportunity — fractional, project-based, or full-time. My preference is to start with a defined engagement so we both get to see how it works before making a longer commitment.</p>
-      </div>
-
-      <div class="cta-row">
-        <div class="cta-text">If that maps to where you are right now, I'd love 20 minutes.</div>
-        <div class="cta-btns">
-          <a href="https://wa.me/919663757860" target="_blank" class="cta-btn cta-btn-primary">💬 WhatsApp</a>
-          <a href="https://www.linkedin.com/in/pooja-lathkar-b69a2619" target="_blank" class="cta-btn cta-btn-secondary">LinkedIn →</a>
-          <a href="mailto:poojalathkar@gmail.com" class="cta-btn cta-btn-secondary">Email →</a>
-        </div>
-      </div>
-
     </div>
+
   </div>
 </body>
 </html>
