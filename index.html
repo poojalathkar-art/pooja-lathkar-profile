@@ -83,15 +83,14 @@
 
     /* ─── ABOUT ─── */
     .about {
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.8;
       color: var(--text);
       margin-bottom: 56px;
-    }
-
-    .about strong {
-      color: var(--navy);
-      font-weight: 600;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-width: 680px;
     }
 
     /* ─── IMPACT ─── */
@@ -271,6 +270,17 @@
       color: var(--teal);
     }
 
+    .resume-link {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--teal);
+      text-decoration: none;
+    }
+
+    .resume-link:hover { text-decoration: underline; }
+
     /* ─── OPEN TO ─── */
     .open-to {
       margin-bottom: 56px;
@@ -378,9 +388,14 @@
     </header>
 
     <!-- ABOUT -->
-    <p class="about">
-      I've worked across sectors and functions for 15+ years. What stayed constant through all of it was one question: why do some people thrive at work and others don't? I was building teams, watching what motivated people, noticing what made good work possible and what got in the way. That curiosity is what brought me to People and Culture. I come to it with the experience of someone who has sat on the other side of those decisions, and that changes how I see the work. And with AI entering the picture, it is just about to get very interesting.
-    </p>
+    <div class="about">
+      <p>I've had a slightly unconventional career.</p>
+      <p>I started in education, then moved into fundraising, then product, then customer success, and eventually People & Culture. On paper, it looks like I couldn't make up my mind. But to me, it's always been the same problem viewed from different angles.</p>
+      <p>I've always been fascinated by why some organisations seem to bring out the best in people, while others, with equally smart people, struggle.</p>
+      <p>The more I worked across functions, the more I kept seeing the same thing — it's rarely about the people. The people were usually fine. It was everything around them — how the place was run, how managers showed up, what got rewarded.</p>
+      <p>I moved into People and Culture because it felt like the closest I could get to actually fixing the things I kept seeing.</p>
+      <p>AI makes me optimistic about that. For the first time, there are tools that can actually help us fix the systems around people.</p>
+    </div>
 
     <!-- IMPACT -->
     <section class="impact">
@@ -442,6 +457,7 @@
         <a href="https://www.teachforindia.org/" target="_blank" class="brand-link">Teach For India ↗</a>
         <a href="https://leadschool.in/about-us/know-the-company/" target="_blank" class="brand-link">Lead School ↗</a>
       </div>
+      <a href="./Pooja Lathkar_Resume 2026.pdf" target="_blank" class="resume-link">View full résumé →</a>
     </section>
 
     <!-- AN EDGE I BRING -->
@@ -468,7 +484,7 @@
     <!-- WHAT I'M OPEN TO -->
     <section class="open-to">
       <div class="label">What I'm Open To</div>
-      <p>Open to the right opportunity — fractional, project-based, or full-time. My preference is to start with a defined engagement so we both get to see how it works before making a longer commitment.</p>
+      <p>If something here resonates with where your organisation is, I'd genuinely love to talk.</p>
     </section>
 
     <!-- CTA -->
@@ -501,16 +517,6 @@
           Gmail
         </a>
 
-        <!-- Resume -->
-        <a href="./Pooja Lathkar_Resume 2026.pdf" target="_blank" class="cta-btn btn-resume">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
-          </svg>
-          Résumé
-        </a>
 
       </div>
     </div>
